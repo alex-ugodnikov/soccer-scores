@@ -4,7 +4,7 @@ import List from './components/List';
 
 import Navbar from './components/Navbar';
 
-import './App.css'
+import './App.css';
 
 // API will be used: https://www.scorebat.com/video-api/
 

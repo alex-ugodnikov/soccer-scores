@@ -33,18 +33,15 @@ export default class List extends Component {
 							<div className="match-card" key={index}>
 								<p>{match.title}</p>
 								<p class="small">{match.competition.name}</p>
-								<p>
-									{match.videos.map(matchVideo => {
-                                        
+                                <button>Watch Highlights</button>
+									{/* {match.videos.map(matchVideo => {                                       
 										return (
-											<div>
+											<div className="video-container">
 												<p>{matchVideo.title}</p>
-												{matchVideo.embed}
-                                                
+												<div dangerouslySetInnerHTML={{__html: matchVideo.embed}}></div>
 											</div>
 										);
-									})}
-								</p>
+									})} */}
 							</div>
 						);
 					})}

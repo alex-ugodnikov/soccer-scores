@@ -14,5 +14,13 @@ body {
 }
 
 .match-card {
-padding: 0 0 10px 0;
+margin: 0 0 10px 0;
+padding: 10px;
+border: 1px solid grey;
+border-radius: 6px;
+width: 500px;
+}
+
+.video-container {
+  width: 500px;
 }

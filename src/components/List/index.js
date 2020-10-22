@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export default class List extends Component {
+class List extends Component {
 	state = {
 		matches: []
 	};
 
 	componentDidMount() {
-		const current = new Date();
-		const currentDate = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-
 		axios.get('https://www.scorebat.com/video-api/v1/').then(result => {
 			const matches = result.data;
 			this.setState({ matches });
-			console.log(matches);
+			
 		});
 	}
 
@@ -32,9 +30,10 @@ export default class List extends Component {
 						return (
 							<div className="match-card" key={index}>
 								<p>{match.title}</p>
-								<p class="small">{match.competition.name}</p>
-                                <button>Watch Highlights</button>
-									{/* {match.videos.map(matchVideo => {                                       
+								<p className="small">{match.competition.name}</p>
+								<Link to={`/match/${index}`} params={{matchProps:1}}><button>Watch Highlights</button>
+                                </Link>
+								{/* {match.videos.map(matchVideo => {                                       
 										return (
 											<div className="video-container">
 												<p>{matchVideo.title}</p>
@@ -49,3 +48,5 @@ export default class List extends Component {
 		);
 	}
 }
+
+export default List;

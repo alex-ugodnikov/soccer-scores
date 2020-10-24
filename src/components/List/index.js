@@ -10,11 +10,13 @@ class List extends Component {
 		this.state = { currentDate, currentDateFormatted };
 	}
 
-	decreaseDate() {
+	decreaseDate = () => {
 		const newCurrentDate = new Date();
 		newCurrentDate.setDate(this.state.currentDate.getDate() - 1);
+		const newCurrentDateFormatted = `${newCurrentDate.getMonth() +
+			1}-${newCurrentDate.getDate()}-${newCurrentDate.getFullYear()}`;
 		console.log(newCurrentDate);
-		this.setState({ currentDate: newCurrentDate });
+		this.setState({ currentDate: newCurrentDate, currentDateFormatted: newCurrentDateFormatted});
 	}
 
 	render() {

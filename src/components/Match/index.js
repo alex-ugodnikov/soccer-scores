@@ -12,14 +12,14 @@ class Match extends Component {
 				</Link>
 				<div className="match-card-detailed">
 					<div>
-						<div style={{ float: 'right'}}>{match.date.substring(0, 10)}</div>
+						<div style={{ float: 'right' }}>{match.date.substring(0, 10)}</div>
 						<h3>{match.title}</h3>
 
 						<p className="small">{match.competition.name}</p>
 
-						{match.videos.reverse().map(matchVideo => {
+						{match.videos.reverse().map((matchVideo,index) => {
 							return (
-								<div className="video-container">
+								<div className="video-container" key={index}>
 									<p>{matchVideo.title}</p>
 									<div dangerouslySetInnerHTML={{ __html: matchVideo.embed }} />
 								</div>

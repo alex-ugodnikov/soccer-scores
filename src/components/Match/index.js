@@ -5,8 +5,6 @@ class Match extends Component {
 	render() {
 		const { id } = this.props.match.params;
 		const match = this.props.matchesFromAPI[id];
-		console.log(match);
-
 		return (
 			<div>
 				<Link to={'/'}>

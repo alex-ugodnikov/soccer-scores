@@ -20,8 +20,6 @@ class List extends Component {
 		const { currentDate } = this.props;
 		const currentDateFormatted = `${currentDate.getMonth() +
 			1}-${currentDate.getDate()}-${currentDate.getFullYear()}`;
-		console.log(currentDate);
-		console.log(this.props.matchesFromAPI);
 		const currentDateToCompare = `${currentDate.getFullYear()}-${currentDate.getMonth() +
 			1}-${currentDate.getDate()}`;
 

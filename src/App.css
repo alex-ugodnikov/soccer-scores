@@ -15,12 +15,44 @@ body {
 
 .match-card {
 margin: 0 0 10px 0;
-padding: 10px;
+padding: 0;
 border: 1px solid grey;
 border-radius: 6px;
-width: 500px;
+width: 600px;
 }
 
+.match-card>div, .match-card-detailed>div {
+  margin: 10px;
+}
+
+.match-card-detailed {
+  margin: 10px 0 10px 0;
+  padding: 0;
+  border: 1px solid grey;
+  border-radius: 6px;
+  width: 600px;
+  }
+
 .video-container {
-  width: 500px;
+  width: 100%;
+  padding: 0;
+}
+
+.date-control {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: darkcyan
+}
+
+.date-control:first-of-type {
+  margin-right: 34px;  
+}
+
+.date-control:hover {
+  color: darkslategray}
+
+@media only screen and (max-width: 660px) {
+  .match-card, .match-card-detailed {
+    width: 100%;
+  }
 }

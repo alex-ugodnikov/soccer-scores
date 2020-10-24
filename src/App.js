@@ -12,7 +12,8 @@ import './App.css';
 class App extends Component {
 	state = {
 		matchesFromAPI: [],
-		loading: true
+		loading: true,
+		currentDate: new Date()
 	};
 
 	componentDidMount() {
@@ -20,10 +21,19 @@ class App extends Component {
 			.get('https://www.scorebat.com/video-api/v1/')
 			.then(result => {
 				const matchesFromAPI = result.data;
+				matchesFromAPI.map((match, index) => {
+					match.id = index;
+				})
+
+
 				this.setState({ matchesFromAPI });
 			})
 			.then(() => this.setState({ loading: false }))
 			.catch(err => console.log(err));
+	}
+
+	setDate = (currentDate) => {
+		this.setState({ currentDate })
 	}
 
 	render() {
@@ -34,19 +44,19 @@ class App extends Component {
 					{this.state.loading ? (
 						'Loading...'
 					) : (
-						<Switch>
-							{/* <Route path="/" exact component={List} matchesFromAPI={this.state.matchesFromAPI} /> */}
-							<Route
-								path="/"
-								exact
-								component={() => <List matchesFromAPI={this.state.matchesFromAPI} />}
-							/>
-							<Route
-								path="/match/:id"
-								component={props => <Match {...props} matchesFromAPI={this.state.matchesFromAPI} />}
-							/>
-						</Switch>
-					)}
+							<Switch>
+								{/* <Route path="/" exact component={List} matchesFromAPI={this.state.matchesFromAPI} /> */}
+								<Route
+									path="/"
+									exact
+									render={(props) => <List {...props} setDate={this.setDate} currentDate={this.state.currentDate} matchesFromAPI={this.state.matchesFromAPI} />}
+								/>
+								<Route
+									path="/match/:id"
+									render={props => <Match {...props} matchesFromAPI={this.state.matchesFromAPI} />}
+								/>
+							</Switch>
+						)}
 				</Router>
 			</div>
 		);

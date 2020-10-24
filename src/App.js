@@ -22,7 +22,7 @@ class App extends Component {
 			.then(result => {
 				const matchesFromAPI = result.data;
 				matchesFromAPI.map((match, index) => {
-					match.id = index;
+					return match.id = index;
 				})
 
 

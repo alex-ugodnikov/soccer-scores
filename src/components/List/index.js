@@ -4,20 +4,31 @@ import { Link } from 'react-router-dom';
 class List extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { date: new Date() };
+		const currentDate = new Date();
+		const currentDateFormatted = `${currentDate.getMonth() +
+			1}-${currentDate.getDate()}-${currentDate.getFullYear()}`;
+		this.state = { currentDate, currentDateFormatted };
+	}
+
+	decreaseDate() {
+		const newCurrentDate = new Date();
+		newCurrentDate.setDate(this.state.currentDate.getDate() - 1);
+		console.log(newCurrentDate);
+		this.setState({ currentDate: newCurrentDate });
 	}
 
 	render() {
-		console.log(this.state.date);
-		const current = new Date();
-		const currentDate = `${current.getMonth() + 1}/${current.getDate()}/${current.getFullYear()}`;
-		const currentDateToCompare = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+		const { currentDate, currentDateFormatted } = this.state;
+		console.log(currentDate);
+		const currentDateToCompare = `${currentDate.getFullYear()}-${currentDate.getMonth() +
+			1}-${currentDate.getDate()}`;
 
 		return (
 			<div className="List">
 				<h3>
-					Date: {currentDate}
+					Date: {currentDateFormatted}
 					<br />
+					<button onClick={this.decreaseDate}>PREV</button>
 					{/* <Link to={`#`} className="date-control">{`<Prev`}</Link>
 					<Link to={`#`} className="date-control">{`Next>`}</Link> */}
 				</h3>

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Match from './components/Match';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import AppBar from '@material-ui/core/AppBar';
 
 import './App.css';
 
@@ -39,6 +40,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+		
 				<Navbar />
 				<Router>
 					{this.state.loading ? (
